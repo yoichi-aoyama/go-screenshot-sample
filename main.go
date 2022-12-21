@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/sclevine/agouti"
 	"os"
+	"time"
 )
 
 func main() {
@@ -27,8 +28,12 @@ func main() {
 		return
 	}
 
+	day := time.Now()
+	const layout2 = "20060102_150405"
+	fileSuffix := day.Format(layout2)
+
 	// 引数のURLを開く
 	page.Navigate(os.Args[1])
 	// スクリーンショット
-	page.Screenshot("Screenshot01.png")
+	page.Screenshot("Screenshot_" + fileSuffix + "_.png")
 }
